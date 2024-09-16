@@ -1,27 +1,41 @@
-<nav class="text-bg-primary border-bottom">
-    <div class="container d-flex flex-wrap">
-        <ul class="nav me-auto">
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2 active"
-                    aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2">Pricing</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2">About</a></li>
-        </ul>
-        <ul class="nav">
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2">Login</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2">Sign up</a></li>
-        </ul>
-    </div>
-</nav>
-<header class="py-3 mb-4 border-bottom">
-    <div class="container d-flex flex-wrap justify-content-center align-items-center">
-        <a href=" /" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
-            <img class="bi me-2" width="80" src="/logo.png" alt="logo">
-            <span class="fs-4">FerreMas</span>
-        </a>
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </form>
-    </div>
-</header>
+<section class="navegador">
+    <nav class="top-nav border-bottom">
+        <div class="container d-flex flex-wrap">
+            <ul class="nav me-auto">
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2"
+                        aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2">Marcas</a></li>
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2">Categorías</a></li>
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2">Nosotros</a></li>
+            </ul>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a [routerLink]="['/tienda/cart']" class="nav-link link-body-emphasis text-white px-2">
+                        <i class="bi bi-cart"></i>
+                        Mi Carro
+                    </a>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2">Login</a></li>
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2">Sign up</a></li>
+            </ul>
+        </div>
+    </nav>
+    <header class="bottom-nav py-3 mb-4 border-bottom">
+        <div class="container buscador-container d-flex flex-wrap justify-content-center align-items-center">
+            <a href="/"
+                class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+                <img class="bi me-2 logo-img" src="/logo.png" alt="logo">
+                <span class="fs-4">Ferremas</span>
+            </a>
+            <form class="formulario col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+                <div class="input-group">
+                    <input type="search" class="buscador form-control" placeholder="¡Hola! ¿Qué estás buscando?"
+                        aria-label="Search" name="query" id="query">
+                    <button class="btn btn-success btn-sm" type="submit" onclick="bucador();">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </header>
+</section>

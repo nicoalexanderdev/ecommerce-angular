@@ -1,0 +1,84 @@
+.navegador{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.top-nav{
+    background-color: #0046a2;
+}
+
+.top-nav a{
+    font-size: 1rem;
+}
+
+.bottom-nav{
+    background-color: #e0e0e0;
+}
+
+.buscador-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+  
+.logo-img {
+    max-width: 30%; 
+    margin-right: 10px;
+}
+  
+.formulario {
+    width: 300px;
+}
+  
+.input-group {
+    display: flex;
+    width: 100%;
+}
+  
+.buscador {
+    flex: 1; 
+}
+  
+.btn {
+    flex-shrink: 0; /* Evita que el botón se reduzca */
+}
+
+@media  (max-width: 991px){
+    .bottom-nav img{
+        width: 20%;
+    }
+
+    .formulario{
+        width: 50%;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .buscador-container {
+        flex-direction: row; /* Mantiene la imagen y el buscador alineados horizontalmente */
+        align-items: center;
+      }
+    
+      .logo-img {
+        max-width: 20%; /* Ajusta el tamaño de la imagen en pantallas pequeñas */
+      }
+    
+      .formulario {
+        flex-grow: 1; /* El formulario crecerá para ocupar el espacio restante */
+      }
+    
+      .input-group {
+        width: 100%; /* Asegura que el input y el botón ocupen todo el ancho */
+      }
+    
+      .buscador {
+        width: 85%; /* El input ocupará el 85% del espacio disponible */
+      }
+    
+      .btn {
+        width: 15%; /* El botón ocupará el 15% restante */
+      }
+  }
+  
