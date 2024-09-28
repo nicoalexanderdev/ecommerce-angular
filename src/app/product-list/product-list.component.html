@@ -1,37 +1,41 @@
-<div class="container">
-    <h2>Nuestros Productos:</h2>
-    <hr>
+<app-hero />
+<section class="products">
+    <div class="container">
 
-    @if (showSpinner) {
-    <div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
-        <div class="spinner-grow text-primary" style="width: 5rem; height: 5rem; font-size: 1.5rem;" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
-    }
+        <h2>Nuestros Productos:</h2>
+        <hr>
 
-
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-
-        @for (item of productList; track item.id) {
-        <div class="col-12 col-md-4 d-flex align-items-stretch">
-
-            <div class="card h-100 mb-3 zoom-card">
-
-                <img class="card-img-top" src="http://localhost:8000{{item.image_url}}" alt="">
-                <div class="card-body">
-                    <strong>{{item.marca?.nom_marca}}</strong>
-                    <p class="card-title">{{ item.nombre }}</p>
-                    <strong>{{ item.precio | currency: 'CLP':'symbol-narrow' }}</strong>
-                    <div class="d-grid mt-3">
-                        <button class="btn btn-success">
-                            Agregar al carro
-                            <i class="bi bi-cart"></i>
-                        </button>
-                    </div>
-                </div>
+        @if (showSpinner) {
+        <div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
+            <div class="spinner-grow text-primary" style="width: 5rem; height: 5rem; font-size: 1.5rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
             </div>
         </div>
         }
+
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            @for (item of productList; track item.id) {
+            <div class="col-12 col-md-4 d-flex align-items-stretch">
+
+                <div class="card h-100 mb-3 zoom-card">
+
+                    <img class="card-img-top" src="http://localhost:8000{{item.image_url}}" alt="">
+                    <div class="card-body">
+                        <strong>{{item.marca?.nom_marca}}</strong>
+                        <p class="card-title">{{ item.nombre }}</p>
+                        <strong>{{ item.precio | currency: 'CLP':'symbol-narrow' }}</strong>
+                        <div class="d-grid mt-3">
+                            <button class="btn btn-success">
+                                Agregar al carro
+                                <i class="bi bi-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
     </div>
-</div>
+</section>

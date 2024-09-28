@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,5 +9,12 @@ import { RouterModule } from '@angular/router';
   styleUrl: './nav.component.css'
 })
 export class NavComponent {
+
+  cartToggleHandler = output<boolean>();
+
+  updateIsCollase() {
+    this.cartToggleHandler.emit(!this.cartToggleHandler);
+  }
+
 
 }

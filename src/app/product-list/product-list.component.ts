@@ -3,12 +3,13 @@ import { OnInit } from '@angular/core';
 import { Product } from '../models/product';
 import { ProductService } from '../service/product/product.service';
 import { CommonModule } from '@angular/common';
+import { HeroComponent } from "../hero/hero.component";
 
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeroComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })

@@ -1,105 +1,108 @@
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-primary">Tu Carro</span>
-                <span class="badge bg-primary rounded-pill">2</span>
-            </h4>
+<section class="shopping-cart">
 
-            <div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-primary">Tu Carro</span>
+                    <!-- <span class="badge bg-primary rounded-pill">2</span> -->
+                </h4>
 
-                <div class="col-6">
-                    <img class="img-fluid w-100" src="" alt="imagen-producto">
-                </div>
-                <div class="col-6">
-                    <a href="" class="btn btn-default" style="font-size: 1rem;">
-                        <strong></strong>
-                    </a>
-                    <a href="" class="btn btn-default" style="font-size: 1rem;">
-                        <strong></strong>
-                    </a>
-                    <p style="font-size: 1rem;"></p>
-                    <p style="font-size: 1rem;">ID: </p>
-                    <p style="font-size: 1rem;">$</p>
+                <div class="row">
 
-
-                    <div class="btn-group btn-group-sm mb-3" role="group">
-                        <a href="{% url 'restar-carrito' value.producto_id %}" type="button"
-                            class="btn btn-outline-secondary">-</a>
-                        <button type="button" class="btn btn-outline-secondary">
+                    <div class="col-6">
+                        <img class="img-fluid w-100" src="" alt="imagen-producto">
+                    </div>
+                    <div class="col-6">
+                        <a href="" class="btn btn-default" style="font-size: 1rem;">
                             <strong></strong>
-                        </button>
-                        <a href="" type="button" class="btn btn-outline-secondary">+</a>
+                        </a>
+                        <a href="" class="btn btn-default" style="font-size: 1rem;">
+                            <strong></strong>
+                        </a>
+                        <p style="font-size: 1rem;"></p>
+                        <p style="font-size: 1rem;">ID: </p>
+                        <p style="font-size: 1rem;">$</p>
+
+
+                        <div class="btn-group btn-group-sm mb-3" role="group">
+                            <a href="{% url 'restar-carrito' value.producto_id %}" type="button"
+                                class="btn btn-outline-secondary">-</a>
+                            <button type="button" class="btn btn-outline-secondary">
+                                <strong></strong>
+                            </button>
+                            <a href="" type="button" class="btn btn-outline-secondary">+</a>
+                        </div>
+
+
                     </div>
 
 
-                </div>
+
+                    <div class="mt-3">
+                        <h5>Detalles de la entrega</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Tipo de entrega</span>
+                                <span></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Dirección</span>
+                                <span></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Fecha de entrega</span>
+                                <span></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Costo de despacho</span>
+                                <span>$</span>
+                            </li>
+                        </ul>
+                    </div>
 
 
 
-                <div class="mt-3">
-                    <h5>Detalles de la entrega</h5>
-                    <ul class="list-group">
+
+                    <div class="alert alert-danger text-center">
+                        Sin Productos
+                    </div>
+
+
+
+
+                    <ul>
+                        <br>
                         <li class="list-group-item d-flex justify-content-between">
-                            <span>Tipo de entrega</span>
-                            <span></span>
+                            <span>Subtotal</span>
+                            <span id="subtotal" data-value="">$</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
-                            <span>Dirección</span>
-                            <span></span>
+                            <span>Total a pagar</span>
+                            <span id="total_a_pagar">$</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
-                            <span>Fecha de entrega</span>
-                            <span></span>
+                            <span>Valor dolar actual</span>
+                            <span id="valor_dolar" data-value="">$</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
-                            <span>Costo de despacho</span>
+                            <span>Total en dolares</span>
                             <span>$</span>
                         </li>
+
                     </ul>
-                </div>
+
+                    <hr>
+                    <div class="d-grid gap-2">
+                        <a href="" class="btn btn-danger">Limpiar</a>
+
+                        <a href="" class="btn btn-success">Ir al carrito</a>
 
 
-
-
-                <div class="alert alert-danger text-center">
-                    Sin Productos
-                </div>
-
-
-
-
-                <ul>
-                    <br>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Subtotal</span>
-                        <span id="subtotal" data-value="">$</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total a pagar</span>
-                        <span id="total_a_pagar">$</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Valor dolar actual</span>
-                        <span id="valor_dolar" data-value="">$</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total en dolares</span>
-                        <span>$</span>
-                    </li>
-
-                </ul>
-
-                <hr>
-                <div class="d-grid gap-2">
-                    <a href="" class="btn btn-danger">Limpiar</a>
-
-                    <a href="" class="btn btn-success">Ir al carrito</a>
-
+                    </div>
 
                 </div>
-
             </div>
         </div>
     </div>
-</div>
+</section>
