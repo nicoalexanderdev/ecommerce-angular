@@ -18,35 +18,31 @@
                 }
                 @for (item of marcasList; track item.id){
                 <div class="form-check">
-
                     <input class="form-check-input" type="radio" [value]="item.id" name="marcaFilter"
                         id="marca{{item.id}}" (change)="onMarcaChange(item.id)">
                     <label class="form-check-label" for="marca{{item.id}}">
                         {{item.nom_marca}}
                     </label>
-
                 </div>
                 }
 
                 <br>
 
-                <h4>Categorias</h4>
+                <h4>Filtrar por categorias:</h4>
                 @if (spinnerCategoria) {
                 <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
                     <div class="spinner-border text-primary" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>
-
                 }
                 @for (item of categoriasList; track item.id){
                 <div class="form-check">
-
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="{{item.id}}">
-                    <label class="form-check-label" for="{{item.id}}">
+                    <input class="form-check-input" type="radio" [value]="item.id" name="categoriaFilter"
+                        id="categoria{{item.id}}" (change)="onCategoriaChange(item.id)">
+                    <label class="form-check-label" for="categoria{{item.id}}">
                         {{item.nom_categoria}}
                     </label>
-
                 </div>
                 }
                 <br>
@@ -54,8 +50,8 @@
 
 
             <div class="col-12 col-md-9">
-                @if (selectedMarca) {
-                <h3>Productos de {{selectedMarca}}</h3>
+                @if (selectedFilter) {
+                <h3>Productos de {{selectedFilter}}</h3>
                 }
                 @if (filteredProductList.length > 0) {
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">

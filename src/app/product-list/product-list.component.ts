@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Product } from '../models/product';
-import { ProductService, ProductResponse } from '../service/product/product.service';
+import { ProductService, ProductResponse, CategoriaResponse } from '../service/product/product.service';
 import { CommonModule } from '@angular/common';
 import { HeroComponent } from "../hero/hero.component";
 import { Marca } from '../models/marca';
@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit {
   marcasList: Marca[] = [];
   categoriasList: Categoria[] = [];
   filteredProductList: Product[] = [];
-  selectedMarca: string = "";
+  selectedFilter: string = "";
   message: string = "";
 
   showSpinner: boolean = true;
@@ -88,7 +88,7 @@ export class ProductListComponent implements OnInit {
   // resetear filtro
   resetFilter(): void {
     this.filteredProductList = this.productList;
-    this.selectedMarca = '';
+    this.selectedFilter = '';
     console.log('Filtro reseteado:', this.filteredProductList);
   }
 
@@ -97,12 +97,12 @@ export class ProductListComponent implements OnInit {
   onMarcaChange(marcaId: number): void {
     this.showSpinner = true;
     this.filteredProductList = [];
-    this.selectedMarca = "";
+    this.selectedFilter = "";
     this.message = "Cargando Productos...";
     this.productService.getProductsByMarca(marcaId).subscribe(
       (response: ProductResponse): void => {
         this.filteredProductList = response.productos;
-        this.selectedMarca = response.marca;
+        this.selectedFilter = response.marca;
         this.showSpinner = false;
         console.log('Productos filtrados:', this.filteredProductList);
       },
@@ -110,10 +110,34 @@ export class ProductListComponent implements OnInit {
         console.error('Error al filtrar productos por marca:', error);
         this.showSpinner = false;
         this.filteredProductList = [];
-        this.selectedMarca = '';
+        this.selectedFilter = '';
         this.message = "No se encontraron productos"
       }
     );
+  }
+
+  // filtrar productos por categoria
+  onCategoriaChange(categoriaId: number): void {
+    this.showSpinner = true;
+    this.filteredProductList = [];
+    this.selectedFilter = "";
+    this.message = "Cargando Productos...";
+    this.productService.getProductsByCategoria(categoriaId).subscribe(
+      (response: CategoriaResponse): void => {
+        this.filteredProductList = response.productos;
+        this.selectedFilter = response.categoria;
+        this.showSpinner = false;
+        console.log('Productos filtrados:', this.filteredProductList);
+      },
+      (error) => {
+        console.error('Error al filtrar productos por marca:', error);
+        this.showSpinner = false;
+        this.filteredProductList = [];
+        this.selectedFilter = '';
+        this.message = "No se encontraron productos"
+      }
+    )
+
   }
 
 }

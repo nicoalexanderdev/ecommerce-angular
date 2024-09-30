@@ -11,6 +11,11 @@ export interface ProductResponse {
   productos: Product[];
 }
 
+export interface CategoriaResponse {
+  categoria: string;
+  productos: Product[];
+}
+
 
 
 @Injectable({ providedIn: 'root' })
@@ -39,5 +44,9 @@ export class ProductService {
 
   getProductsByMarca(marcaId: number): Observable<ProductResponse> {
     return this.http.get<ProductResponse>(this.apiUrl + "/get-productos-marca/" + marcaId, { headers: this.headers });
+  }
+
+  getProductsByCategoria(categoriaId: number): Observable<CategoriaResponse> {
+    return this.http.get<CategoriaResponse>(this.apiUrl + "/get-productos-categoria/" + categoriaId, { headers: this.headers });
   }
 }
