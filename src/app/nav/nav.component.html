@@ -2,11 +2,12 @@
     <nav class="top-nav border-bottom">
         <div class="container d-flex flex-wrap">
             <ul class="nav me-auto">
-                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2"
+                <li class="nav-item"><a [routerLink]="['']" class="nav-link link-body-emphasis text-white px-2"
                         aria-current="page">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2">Marcas</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2">Categorías</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis text-white px-2">Nosotros</a></li>
+                <li class="nav-item"><a [routerLink]="['tienda/marcas']"
+                        class="nav-link link-body-emphasis text-white px-2">Marcas</a></li>
+                <li class="nav-item"><a [routerLink]="['tienda/categorias']"
+                        class="nav-link link-body-emphasis text-white px-2">Categorías</a></li>
             </ul>
             <ul class="nav">
                 <li class="nav-item">
