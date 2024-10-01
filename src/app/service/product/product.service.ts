@@ -1,27 +1,18 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../../models/product';
 import { environment } from '../../../environments/environment';
 import { Marca } from '../../models/marca';
 import { Categoria } from '../../models/categoria';
-
-export interface ProductResponse {
-  marca: string;
-  productos: Product[];
-}
-
-export interface CategoriaResponse {
-  categoria: string;
-  productos: Product[];
-}
-
+import { MakerResponse } from '../../models/interfaces/MakerResponse';
+import { CategoryResponse } from '../../models/interfaces/CategoryResponse';
 
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
 
-  private apiUrl = environment.apiUrl + "/productos";
+  private apiUrl = environment.apiUrl;
 
   headers = new HttpHeaders({
     'Authorization': 'Token 7688f81c094d735e469a4fc4cba97917bf07c89b',
@@ -30,23 +21,28 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  findAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiUrl, { headers: this.headers });
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl + "/products");
   }
 
-  getMarcas(): Observable<Marca[]> {
-    return this.http.get<Marca[]>(this.apiUrl + "/get-marcas", { headers: this.headers });
+  getMakers(): Observable<Marca[]> {
+    return this.http.get<Marca[]>(this.apiUrl + "/makers");
   }
 
-  getCategorias(): Observable<Categoria[]> {
-    return this.http.get<Categoria[]>(this.apiUrl + "/get-categorias", { headers: this.headers });
+  getCategories(): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(this.apiUrl + "/categories");
   }
 
-  getProductsByMarca(marcaId: number): Observable<ProductResponse> {
-    return this.http.get<ProductResponse>(this.apiUrl + "/get-productos-marca/" + marcaId, { headers: this.headers });
+  getProductsByMaker(marcaId: number): Observable<MakerResponse> {
+    return this.http.get<MakerResponse>(this.apiUrl + "/products/maker/" + marcaId);
   }
 
-  getProductsByCategoria(categoriaId: number): Observable<CategoriaResponse> {
-    return this.http.get<CategoriaResponse>(this.apiUrl + "/get-productos-categoria/" + categoriaId, { headers: this.headers });
+  getProductsByCategory(categoriaId: number): Observable<CategoryResponse> {
+    return this.http.get<CategoryResponse>(this.apiUrl + "/products/category/" + categoriaId);
+  }
+
+  search(query: string): Observable<Product[]> {
+    let params = new HttpParams().set('query', query);
+    return this.http.get<Product[]>(this.apiUrl + "/search", { params });
   }
 }

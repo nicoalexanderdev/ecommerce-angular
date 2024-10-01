@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Product } from '../models/product';
-import { ProductService, ProductResponse, CategoriaResponse } from '../service/product/product.service';
+import { ProductService } from '../service/product/product.service';
+import { MakerResponse } from '../models/interfaces/MakerResponse';
+import { CategoryResponse } from '../models/interfaces/CategoryResponse';
 import { CommonModule } from '@angular/common';
 import { HeroComponent } from "../hero/hero.component";
 import { Marca } from '../models/marca';
@@ -41,7 +43,7 @@ export class ProductListComponent implements OnInit {
 
 
   loadProducts(): void {
-    this.productService.findAll().subscribe(
+    this.productService.getProducts().subscribe(
       (products) => {
         this.productList = products || [];
         this.filteredProductList = this.productList;
@@ -57,7 +59,7 @@ export class ProductListComponent implements OnInit {
   }
 
   loadMarcas(): void {
-    this.productService.getMarcas().subscribe(
+    this.productService.getMakers().subscribe(
       (marcas) => {
         this.marcasList = marcas || [];
         this.spinnerMarca = false;
@@ -71,7 +73,7 @@ export class ProductListComponent implements OnInit {
   }
 
   loadCategorias(): void {
-    this.productService.getCategorias().subscribe({
+    this.productService.getCategories().subscribe({
       next: (data) => {
         this.categoriasList = data || [];
         this.spinnerCategoria = false;
@@ -99,8 +101,8 @@ export class ProductListComponent implements OnInit {
     this.filteredProductList = [];
     this.selectedFilter = "";
     this.message = "Cargando Productos...";
-    this.productService.getProductsByMarca(marcaId).subscribe(
-      (response: ProductResponse): void => {
+    this.productService.getProductsByMaker(marcaId).subscribe(
+      (response: MakerResponse): void => {
         this.filteredProductList = response.productos;
         this.selectedFilter = response.marca;
         this.showSpinner = false;
@@ -122,8 +124,8 @@ export class ProductListComponent implements OnInit {
     this.filteredProductList = [];
     this.selectedFilter = "";
     this.message = "Cargando Productos...";
-    this.productService.getProductsByCategoria(categoriaId).subscribe(
-      (response: CategoriaResponse): void => {
+    this.productService.getProductsByCategory(categoriaId).subscribe(
+      (response: CategoryResponse): void => {
         this.filteredProductList = response.productos;
         this.selectedFilter = response.categoria;
         this.showSpinner = false;
