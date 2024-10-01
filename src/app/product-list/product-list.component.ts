@@ -139,7 +139,6 @@ export class ProductListComponent implements OnInit {
         this.message = "No se encontraron productos"
       }
     )
-
   }
 
 }

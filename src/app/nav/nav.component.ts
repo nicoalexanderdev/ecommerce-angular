@@ -1,6 +1,6 @@
-import { Component, output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ProductService } from '../service/product/product.service';
 import { Product } from '../models/product';
 
@@ -14,20 +14,28 @@ import { Product } from '../models/product';
 export class NavComponent {
 
   filteredProductList: Product[] = [];
-  searchQuery: string = '';
+  query: string = '';
+  router = inject(Router)
 
   constructor(private productService: ProductService) { }
 
   onSearch(): void {
-    if (this.searchQuery.trim() != '') {
-      this.productService.search(this.searchQuery).subscribe(
+    if (this.query.trim() != '') {
+      this.productService.search(this.query).subscribe(
         (products) => {
           this.filteredProductList = products;
+          this.productService.actualizarProductos(this.filteredProductList)
           console.log('Productos encontrados:', this.filteredProductList)
+          this.router.navigate(['tienda/search'], {
+            queryParams: {
+              query: this.query
+            }
+          })
         },
         (error) => {
           console.error('Error al buscar productos:', error);
           this.filteredProductList = [];
+          this.productService.actualizarProductos([]);
         }
       )
     }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Product } from '../../models/product';
 import { environment } from '../../../environments/environment';
 import { Marca } from '../../models/marca';
@@ -44,5 +44,16 @@ export class ProductService {
   search(query: string): Observable<Product[]> {
     let params = new HttpParams().set('query', query);
     return this.http.get<Product[]>(this.apiUrl + "/search", { params });
+  }
+
+
+  // Behavior subject como intercomunidor de data entre componentes
+
+  private productsSource = new BehaviorSubject<Product[]>([]);
+
+  productos$ = this.productsSource.asObservable();
+
+  actualizarProductos(productos: Product[]) {
+    this.productsSource.next(productos);
   }
 }
