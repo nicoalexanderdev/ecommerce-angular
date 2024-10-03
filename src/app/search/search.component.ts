@@ -2,12 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ProductService } from '../service/product/product.service';
 import { Product } from '../models/product';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })

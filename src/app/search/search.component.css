@@ -2,6 +2,7 @@
     font-family: "Roboto", sans-serif;
     font-weight: 300;
     font-style: normal;
+    min-height: 500px;
 }
 
 .zoom-card {
@@ -10,4 +11,8 @@
   
 .zoom-card:hover {
     transform: scale(1.05);
+}
+
+a {
+    text-decoration: none;
 }

@@ -41,6 +41,10 @@ export class ProductService {
     return this.http.get<CategoryResponse>(this.apiUrl + "/products/category/" + categoriaId);
   }
 
+  getProductById(productId: number): Observable<Product> {
+    return this.http.get<Product>(this.apiUrl + "/products/" + productId);
+  }
+
   search(query: string): Observable<Product[]> {
     let params = new HttpParams().set('query', query);
     return this.http.get<Product[]>(this.apiUrl + "/search", { params });

@@ -8,12 +8,13 @@ import { CommonModule } from '@angular/common';
 import { HeroComponent } from "../hero/hero.component";
 import { Marca } from '../models/marca';
 import { Categoria } from '../models/categoria';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, HeroComponent],
+  imports: [CommonModule, HeroComponent, RouterModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
