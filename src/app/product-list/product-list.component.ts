@@ -44,19 +44,19 @@ export class ProductListComponent implements OnInit {
 
 
   loadProducts(): void {
-    this.productService.getProducts().subscribe(
-      (products) => {
+    this.productService.getProducts().subscribe({
+      next: (products) => {
         this.productList = products || [];
         this.filteredProductList = this.productList;
         this.showSpinner = false;
       },
-      (error) => {
+      error: (error) => {
         console.error('Error al cargar productos:', error);
         this.showSpinner = false;
         this.productList = [];
         this.filteredProductList = [];
       }
-    );
+    });
   }
 
   loadMarcas(): void {
