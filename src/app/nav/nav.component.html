@@ -2,12 +2,7 @@
     <nav class="top-nav border-bottom sticky-top">
         <div class="container d-flex flex-wrap">
             <ul class="nav me-auto">
-                <!-- <li class="nav-item"><a [routerLink]="['']" class="nav-link link-body-emphasis text-white px-2"
-                        aria-current="page">Home</a></li>
-                <li class="nav-item"><a [routerLink]="['tienda/marcas']"
-                        class="nav-link link-body-emphasis text-white px-2">Marcas</a></li>
-                <li class="nav-item"><a [routerLink]="['tienda/categorias']"
-                        class="nav-link link-body-emphasis text-white px-2">Categorías</a></li> -->
+
             </ul>
             <ul class="nav">
                 <li class="nav-item">
@@ -16,10 +11,20 @@
                         Mi Carro
                     </a>
                 </li>
-                <li class="nav-item"><a [routerLink]="['accounts/login']"
-                        class="nav-link link-body-emphasis text-white px-2">Login</a></li>
-                <li class="nav-item"><a [routerLink]="['accounts/sign-up']"
-                        class="nav-link link-body-emphasis text-white px-2">Sign up</a></li>
+                @if (usuario != '') {
+                <li class="nav-item">
+                    <a href="" class="nav-link link-body-emphasis text-white px-2">Cerrar Sesión</a>
+                </li>
+                } @else {
+                <li class="nav-item">
+                    <a [routerLink]="['accounts/login']" class="nav-link link-body-emphasis text-white px-2">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['accounts/sign-up']" class="nav-link link-body-emphasis text-white px-2">Sign
+                        up</a>
+                </li>
+                }
+
             </ul>
         </div>
     </nav>
@@ -29,6 +34,7 @@
                 class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
                 <img class="bi me-2 logo-img" src="/logo.png" alt="logo">
                 <span class="fs-4">Ferremas</span>
+                <span> Bienvenido {{usuario}}</span>
             </a>
             <form class="formulario col-12 col-lg-auto mb-3 mb-lg-0" role="search">
                 <div class="input-group">
